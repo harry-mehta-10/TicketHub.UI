@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketHub - Concert Tickets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"><i class="fas fa-ticket-alt"></i> TicketHub</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Concerts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="concert-details">
+                            <span class="badge bg-primary">Featured Concert</span>
+                            <h1>Taylor Swift: The Eras Tour</h1>
+                            <div class="concert-meta">
+                                <p><i class="fas fa-calendar"></i> July 8, 2025 | 7:30 PM</p>
+                                <p><i class="fas fa-map-marker-alt"></i> Rogers Centre, Toronto</p>
+                                <p><i class="fas fa-ticket-alt"></i> Starting from $150.00</p>
+                            </div>
+                            <p class="concert-description">
+                                Experience Taylor Swift's record-breaking Eras Tour, celebrating music from all phases of her illustrious career.
+                                Don't miss this once-in-a-lifetime concert experience!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="concert-image">
+                            <img src="https://placehold.co/800x600?text=Taylor+Swift+Eras+Tour" alt="Taylor Swift Concert" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="purchase-form">
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="text-center mb-4">Purchase Tickets</h2>
+                    
+                    <div id="alertMessages" class="alert d-none mb-4"></div>
+                    
+                    <form id="ticketForm">
+                        <input type="hidden" id="concertId" name="concertId" value="1">
+                        
+                        <!-- Personal Information -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Personal Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                        <div class="invalid-feedback">Please enter your full name.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" 
+                                               placeholder="(123) 456-7890" required>
+                                        <div class="invalid-feedback">Please enter a valid phone number.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="quantity" class="form-label">Number of Tickets</label>
+                                        <select class="form-select" id="quantity" name="quantity" required>
+                                            <option value="">Select quantity</option>
+                                            <option value="1">1 Ticket ($150.00)</option>
+                                            <option value="2">2 Tickets ($300.00)</option>
+                                            <option value="3">3 Tickets ($450.00)</option>
+                                            <option value="4">4 Tickets ($600.00)</option>
+                                            <option value="5">5 Tickets ($750.00)</option>
+                                            <option value="6">6 Tickets ($900.00)</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select the number of tickets.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Information -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Payment Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="creditCard" class="form-label">Credit Card Number</label>
+                                        <input type="text" class="form-control" id="creditCard" name="creditCard" 
+                                               placeholder="4111 1111 1111 1111" required>
+                                        <div class="invalid-feedback">Please enter a valid credit card number.</div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="expiration" class="form-label">Expiration (MM/YY)</label>
+                                        <input type="text" class="form-control" id="expiration" name="expiration" 
+                                               placeholder="MM/YY" required>
+                                        <div class="invalid-feedback">Please enter a valid expiration date (MM/YY).</div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="securityCode" class="form-label">Security Code</label>
+                                        <input type="text" class="form-control" id="securityCode" name="securityCode" 
+                                               placeholder="123" required>
+                                        <div class="invalid-feedback">Please enter a valid security code.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Billing Address -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Billing Address</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="address" class="form-label">Street Address</label>
+                                        <input type="text" class="form-control" id="address" name="address" required>
+                                        <div class="invalid-feedback">Please enter your street address.</div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" class="form-control" id="city" name="city" required>
+                                        <div class="invalid-feedback">Please enter your city.</div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="province" class="form-label">Province/State</label>
+                                        <input type="text" class="form-control" id="province" name="province" required>
+                                        <div class="invalid-feedback">Please enter your province or state.</div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="postalCode" class="form-label">Postal Code</label>
+                                        <input type="text" class="form-control" id="postalCode" name="postalCode" 
+                                               placeholder="A1A 1A1" required>
+                                        <div class="invalid-feedback">Please enter a valid postal code.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="country" class="form-label">Country</label>
+                                        <select class="form-select" id="country" name="country" required>
+                                            <option value="">Select country</option>
+                                            <option value="Canada" selected>Canada</option>
+                                            <option value="United States">United States</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select your country.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col text-center">
+                                <div id="orderSummary" class="order-summary p-3">
+                                    <h4>Order Summary</h4>
+                                    <p>Taylor Swift: The Eras Tour</p>
+                                    <p><span id="ticketQuantitySummary">0</span> tickets x $150.00 = $<span id="totalAmount">0.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Complete Purchase</button>
+                                </div>
+                                <div class="form-text text-center mt-3">
+                                    By completing this purchase, you agree to our <a href="#">Terms & Conditions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-ticket-alt"></i> TicketHub</h5>
+                    <p>Your premier destination for concert tickets in Canada.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Upcoming Concerts</a></li>
+                        <li><a href="#">Venues</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Stay Connected</h5>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 TicketHub. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
